@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S.H.A.P.E. Spiritual Gift Assessment</title>
+<style>
+
+:root{
+ --navy:#15385f;--blue:#2876bd;--blue-deep:#174d83;--sky:#d9edfb;--gold:#d7ad63;
+ --ink:#1d2939;--muted:#65758a;--line:#dce6ef;--bg:#f5f9fc;--white:#fff;
+ --ease:cubic-bezier(.2,.75,.25,1)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 8% 14%,#eaf5fc 0,transparent 34%),var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+header{
+ position:relative;isolation:isolate;overflow:hidden;color:#fff;padding:0;
+ background:linear-gradient(115deg,#dceefa 0%,#b9d8ee 42%,#729fc4 100%);
+ border-bottom:1px solid #b8d3e8;
+}
+header:before{
+ content:"";position:absolute;z-index:-2;inset:0 0 0 auto;width:min(58%,850px);
+ background-image:linear-gradient(90deg,rgba(211,234,249,.04),rgba(18,48,79,.08)),url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=2400&q=90");
+ background-size:cover;background-position:center 54%;
+ mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 14%,#000 48%);
+ opacity:.92;
+}
+header:after{
+ content:"";position:absolute;z-index:-1;inset:0;
+ background:linear-gradient(90deg,rgba(226,242,252,.98) 0%,rgba(216,236,249,.95) 43%,rgba(33,76,115,.16) 100%);
+ pointer-events:none;
+}
+.hero{max-width:1100px;margin:auto;padding:clamp(30px,5vw,58px) 24px clamp(32px,4vw,48px);min-height:230px;display:flex;align-items:center;position:relative}
+.hero-copy{max-width:690px;animation:riseIn .85s var(--ease) both}
+.brandline{display:flex;align-items:center;gap:15px}
+.cross-mark{width:58px;height:82px;flex:0 0 auto;filter:drop-shadow(0 5px 5px #173b5c1a);animation:crossArrive 1.15s var(--ease) both}
+header h1{margin:0;color:#15385f;font-family:"Segoe Print","Bradley Hand",cursive;font-size:clamp(2.1rem,5.5vw,4rem);font-weight:800;line-height:1.02;letter-spacing:.015em;text-shadow:0 1px 0 #fff9}
+.hero-subtitle{margin:8px 0 0 75px;color:#183e66;font-weight:800;font-size:clamp(.83rem,2vw,1.12rem);letter-spacing:.17em;text-transform:uppercase}
+.hero-tagline{margin:15px 0 0 75px;color:#315d82;letter-spacing:.19em;font-size:.76rem;font-weight:750;text-transform:uppercase}
+.hero-tagline span{padding:0 8px;color:#b38b4e}
+.wrap{max-width:980px;margin:auto;padding:0 18px}
+main{padding:30px 0 68px}
+.panel{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:18px;padding:clamp(17px,3vw,25px);margin-bottom:17px;box-shadow:0 8px 26px #193b5b0a;transition:box-shadow .25s ease,border-color .25s ease}
+.panel:hover{box-shadow:0 12px 30px #193b5b12;border-color:#cfdeeb}
+#intro{position:relative;overflow:hidden;animation:riseIn .75s .08s var(--ease) both}
+#intro:before{display:none!important;content:none!important}
+.sectiontitle{margin:0 0 6px;color:var(--navy);letter-spacing:-.015em}
+#intro h2{font-size:1.55rem}
+#intro>p,#intro>.scale,#intro>button{position:relative;z-index:1}
+.scale{display: flex; justify-content: center; gap:8px
+}
+.scale span{background:#f0f6fb;border:1px solid #e1edf6;border-radius:10px;padding:8px 11px;font-size:.9rem}
+.small{font-size:.92rem;color:var(--muted)}
+button{font:inherit;cursor:pointer;border:0;border-radius:11px;padding:11px 17px;font-weight:700;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 7px 16px #173b5c20}
+button:active:not(:disabled){transform:translateY(0)}
+button:focus-visible{outline:3px solid #88c5f2;outline-offset:3px}
+.primary{background:linear-gradient(135deg,#29a8df,#17395e);color:#fff;box-shadow:0 5px 12px #216aa52b}
+.primary:hover:not(:disabled){background:linear-gradient(135deg,#3a98df,#1c568b)}
+.secondary{background:#edf3f8;color:var(--navy);border:1px solid #dce7f0}
+button:disabled{opacity:.45;cursor:not-allowed}
+#start{margin-top:5px;padding:13px 21px}
+.progressline{height:8px;background:#eaf0f5;border-radius:99px;overflow:hidden;margin:12px 0}
+.progressline div{height:100%;background:linear-gradient(90deg,#6eb8e9,#d7ad63);width:0;transition:width .35s var(--ease);border-radius:99px}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.93rem}
+.question{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:17px 0;border-bottom:1px solid #edf2f6;animation:questionIn .35s var(--ease) both}
+.question:last-child{border-bottom:0}.qtext{font-weight:520}.qnum{color:#52708d;font-weight:800;margin-right:7px}
+.choices{display:flex;gap:5px;flex-shrink:0}.choice{position:relative}
+.choice input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.choice label{display:grid;place-items:center;width:38px;height:38px;border:1px solid #cbd9e5;border-radius:10px;cursor:pointer;font-weight:750;background:#fff;transition:all .16s ease}
+.choice label:hover{border-color:#6fa8d4;background:#f1f8fd}
+.choice input:checked+label{background:var(--navy);color:white;border-color:var(--navy);box-shadow:0 3px 8px #15385f28}
+.choice input:focus-visible+label{outline:3px solid #9dcdf0;outline-offset:2px}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.hidden{display:none!important}
+.resulthead{text-align:center;padding:28px 20px;background:linear-gradient(145deg,#fff,#f0f8fd)}
+.resulthead h2{color:var(--navy);font-size:1.9rem;margin:5px 0}
+.resulthead .small:first-child{letter-spacing:.17em;font-weight:800;color:#3e78a7}
+.gift{border:1px solid var(--line);border-radius:14px;padding:17px;margin:13px 0;background:linear-gradient(120deg,#fff,#fbfdff);animation:riseIn .5s var(--ease) both}
+.gift-top{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.gift h3{margin:0;color:var(--navy)}.letter{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#e5f2fc;color:#1f5e92;font-weight:850;margin-right:8px}
+.score{font-weight:800;white-space:nowrap;color:#1f5e92}
+.bar{height:8px;border-radius:9px;background:#edf2f7;margin:10px 0;overflow:hidden}
+.bar span{display:block;height:100%;background:linear-gradient(90deg,#55a6dc,#d7ad63);border-radius:9px;animation:barGrow .9s var(--ease) both;transform-origin:left}
+table{width:100%;border-collapse:collapse;font-size:.92rem}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line)}th{color:var(--muted)}
+.notice{background:#f2f8fc;border:1px solid #d6e8f5;padding:12px;border-radius:10px;font-size:.92rem}
+a{color:#1c619b;text-decoration-thickness:1px;text-underline-offset:3px}a:hover{color:#123d64}#ministryCards .gift{background:linear-gradient(120deg,#fff,#f4f9fd)}#ministryRecommendations .sectiontitle{margin-bottom:8px}footer{background:linear-gradient(115deg,#17395e,#29a8df);color:#dceaf7;text-align:center;padding:21px 16px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
+footer span{color:#e3c27e;padding:0 9px}
+@keyframes riseIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes questionIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@keyframes crossArrive{from{opacity:0;transform:translateY(-9px) rotate(-2deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+@keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+@media(max-width:650px){
+ .hero{padding:29px 18px 34px;min-height:195px}
+ header:before{width:76%;opacity:.3;background-position:center}
+ header:after{background:linear-gradient(90deg,rgba(226,242,252,.97),rgba(216,236,249,.84))}
+ .cross-mark{width:42px;height:65px}.brandline{gap:10px}
+ .hero-subtitle,.hero-tagline{margin-left:52px;letter-spacing:.12em}
+ .hero-tagline{font-size:.65rem}
+ .question{grid-template-columns:1fr;gap:10px}.choices{justify-content:flex-start}.choice label{width:43px;height:40px}
+ .panel{padding:16px}.gift-top{align-items:center}
+}
+@media print{header{background:#fff;color:#111;padding:10px}.hero{min-height:auto;padding:10px}.hero-copy{animation:none}.wrap{max-width:none}.panel{box-shadow:none;break-inside:avoid}.no-print,footer{display:none!important}body{background:#fff}}
+
+
+.splash-panel{text-align:center;padding:clamp(22px,4vw,42px);position:relative;overflow:hidden}
+.splash-panel .eyebrow{font-size:.72rem;letter-spacing:.22em;font-weight:800;color:#477ba5;margin:0 0 4px}
+.splash-script{font-family:"Segoe Print","Bradley Hand",cursive;font-size:clamp(2.5rem,7vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:.01em;color:#174d83;margin:0;text-shadow:0 1px 0 #fff}
+.splash-subtitle{font-size:clamp(.9rem,2.5vw,1.2rem);letter-spacing:.16em;color:#17385c;margin:7px 0 0}
+.splash-rule{height:3px;width:58px;background:linear-gradient(90deg,#49a9e4,#d7ad63);margin:20px auto;border-radius:4px}
+.splash-panel .splash-lead{font-size:1.16rem;font-weight:650;color:#274f73;margin:0 auto 7px}
+.splash-panel>p:not(.eyebrow):not(.small){max-width:720px;margin:10px auto;color:#4c6177}
+.shape-pillars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:25px 0 24px;position:relative;z-index:1}
+.shape-pillar{display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 7px;border-right:1px solid #e0eaf2}
+.shape-pillar:last-child{border-right:0}
+.pillar-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:linear-gradient(145deg,#e4f3ff,#c8e3f7);color:#1c5d91;font-size:1.6rem;margin-bottom:4px;box-shadow:inset 0 0 0 1px #c0def2}
+.shape-pillar strong{font-size:1.05rem;color:#1b5d92;letter-spacing:.06em}
+.shape-pillar b{font-size:.85rem;color:#1b3855}.shape-pillar small{font-size:.73rem;color:#718297}
+.splash-quote{margin:24px -5px 22px;padding:20px 10px;background:linear-gradient(115deg,#f4faff,#eaf5fc);border-radius:12px;box-shadow:0 1px 2px rgba(15, 23, 42, 0.04);color:#23649a;font-family:"Segoe Print","Bradley Hand",cursive;font-size:clamp(1rem,2.5vw,1.35rem);font-style:italic}
+.splash-quote small{display:block;font-family:system-ui,sans-serif;font-style:normal;font-size:.65rem;letter-spacing:.2em;font-weight:800;margin-top:8px;color:#4c7396}
+.instructions-title{margin-top:15px!important}
+#start{margin-top:8px;padding:14px 24px;min-width:230px;font-size:1rem}
+#start span{padding-left:8px;font-size:1.15rem}.estimated-time{margin-top:12px!important;font-size:.8rem!important}
+@media(max-width:620px){.shape-pillars{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.shape-pillar{border:1px solid #e3edf5;border-radius:12px;padding:12px 5px;background:#fbfdff}.shape-pillar:last-child{grid-column:1/-1}.pillar-icon{width:44px;height:44px}.splash-subtitle{letter-spacing:.1em}}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="brandline">
+        <svg class="cross-mark" viewBox="0 0 64 96" role="img" aria-label="Rugged cross" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#234f76"/><stop offset=".55" stop-color="#15385f"/><stop offset="1" stop-color="#0e2a49"/>
+            </linearGradient>
+          </defs>
+          <path d="M27 5 L37 4 L36 35 L59 33 L60 44 L36 47 L38 89 L27 92 L25 48 L4 50 L3 38 L25 35 Z" fill="url(#wood)"/>
+          <path d="M28 12 L31 31 M10 42 L23 41 M31 54 L32 82 M40 39 L53 39" fill="none" stroke="#8ba9c1" stroke-width="1.4" opacity=".65"/>
+          <path d="M27 7 L24 17 M36 9 L34 27 M5 46 L17 45 M29 60 L29 76" fill="none" stroke="#0c2946" stroke-width="2" opacity=".75"/>
+        </svg>
+        <h1>S.H.A.P.E.</h1>
+      </div>
+      <p class="hero-subtitle">Spiritual Gift Assessment</p>
+      <p class="hero-tagline">Discover <span>•</span> Develop <span>•</span> Serve</p>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+<section id="intro" class="panel splash-panel">
+ <!-- <p class="eyebrow">WELCOME · DISCOVER · GROW</p> -->
+  <h2 class="splash-script">S.H.A.P.E.</h2>
+  <h3 class="splash-subtitle">SPIRITUAL GIFT ASSESSMENT</h3>
+  <div class="splash-rule" aria-hidden="true"></div>
+  <p class="splash-lead">Discover how God has uniquely shaped you.</p>
+  <p>Take this assessment to explore your spiritual gifts and discover where you are being called to serve.</p>
+  <div id="shape-pillars" class="shape-pillars" aria-label="The five parts of S.H.A.P.E.">
+    <div class="shape-pillar"><span class="pillar-icon" aria-hidden="true">✧</span><strong>S</strong><b>Spiritual Gifts</b><small>How God equips you</small></div>
+    <div class="shape-pillar"><span class="pillar-icon" aria-hidden="true">♡</span><strong>H</strong><b>Heart</b><small>What moves you</small></div>
+    <div class="shape-pillar"><span class="pillar-icon" aria-hidden="true">✦</span><strong>A</strong><b>Abilities</b><small>How you contribute</small></div>
+    <div class="shape-pillar"><span class="pillar-icon" aria-hidden="true">◉</span><strong>P</strong><b>Personality</b><small>How you're wired</small></div>
+    <div class="shape-pillar"><span class="pillar-icon" aria-hidden="true">⌁</span><strong>E</strong><b>Experiences</b><small>What has shaped you</small></div>
+  </div>
+  <div class="splash-quote">“For we are God's masterpiece. He has created us anew in Christ Jesus, so we can do the good things he planned for us long ago.”<small>EPHESIANS 2:10</small></div>
+  <h3 class="sectiontitle instructions-title">Before you begin</h3>
+  <p>Answer each statement based on who you are and your life experience</p>
+  <div class="scale"><span><b>0</b> · Not at all, never</span><span><b>1</b> · Some of the time</span><span><b>2</b> · Most of the time</span><span><b>3</b> · Consistently, definitely true</span></div>
+  <p class="small">Your answers are processed automatically. You can move between sections and change answers before your final submission.</p>
+  <button id="start" class="primary">Begin Assessment <span aria-hidden="true">→</span></button><br><br>
+  <p class="small estimated-time">Thoughtful Questions · Automatic and Quick Results  · Top Five Spiritual Gifts · Three Suggested LifePointe Service Areas</p>
+</section>
+<section id="assessment" class="hidden">
+<div class="panel">
+<div class="controls"><span id="sectionLabel">Questions 1–19</span><span id="answered">0 of 133 answered</span></div>
+<div class="progressline"><div id="progress"></div></div>
+<p class="small">Select a score from 0 to 3 for each statement.</p>
+<div id="questions"></div>
+<div class="actions"><button id="prev" class="secondary">Previous</button><button id="next" class="primary">Next section</button></div>
+</div>
+</section>
+<section id="results" class="hidden">
+<div class="panel resulthead"><p class="small">ASSESSMENT COMPLETE</p><h2>Your Spiritual Gifts</h2><p>These are your five highest-scoring categories based on your responses. Treat the results as a starting point for reflection, service, and discussion—not a definitive label.</p></div>
+<div id="giftResults" class="panel"></div>
+<div id="ministryRecommendations" class="panel">
+  <h2 class="sectiontitle">Your Top 3 Ways to Serve at LifePointe</h2>
+  <p class="small">Recommendations will be matched to your top five gifts and to ministries listed at LifePointe. These are thoughtful starting points, not an official placement or a promise that a team currently has openings available.</p>
+  <div id="ministryCards"></div>
+  <p class="small">Explore more: <a href="https://www.churchonafarm.com/ministries" target="_blank" rel="noopener">LifePointe Ministries</a> · <a href="https://www.churchonafarm.com/plan-your-visit" target="_blank" rel="noopener">Visit & volunteer information</a> · <a href="https://www.churchonafarm.com/team-mexico" target="_blank" rel="noopener">Team Mexico</a></p>
+</div>
+<div class="panel"><h2 class="sectiontitle">Full answer-key chart</h2><p class="small">Each letter's total combines its seven assigned questions, matching the answer key's pattern (e.g., A = 1, 20, 39, 58, 77, 96, 115).</p><div style="overflow-x:auto"><table><thead><tr><th>Letter</th><th>Spiritual gift</th><th>Total (T)</th></tr></thead><tbody id="scoreTable"></tbody></table></div></div>
+<div class="panel"><h2 class="sectiontitle">A note on discernment</h2><p>Peronality assessments are meant to help identify directions to explore, not force anyone into a particular service role.</p><div class="actions no-print"><button id="edit" class="secondary">Review answers</button><button id="print" class="primary">Print / save results</button></div></div>
+</section>
+</main>
+<footer>POINTING PEOPLE TO JESUS</footer>
+<script>
+const QUESTIONS = ["I like to organize people, tasks, and events.", "I would like to start churches in places where they do not presently exist.", "I enjoy working creatively with wood, cloth, paints, metal, glass, or other materials.", "I enjoy challenging people’s perspective of God by using various forms of art.", "I can readily distinguish between spiritual truth and error, good and evil.", "I tend to see the potential in people.", "I communicate the gospel to others with clarity and effectiveness.", "I find it natural and easy to trust God to answer my prayers.", "I give liberally and joyfully to people in financial need or to projects requiring support.", "I enjoy working behind the scenes to support the work of others.", "I view my home as a place to minister to people in need.", "I take prayer requests from others and consistently pray for them.", "I am approached by people who want to know my perspective on a particular passage or biblical truth.", "I am able to motivate others to accomplish a goal.", "I empathize with hurting people and desire to help in their healing process.", "I can speak in a way that results in conviction and change in the lives of others.", "I enjoy spending time nurturing and caring for others.", "I am able to communicate God’s work effectively.", "I am often sought out by others for advice about spiritual or personal matters.", "I am careful, thorough, and skilled at managing details.", "I am attracted to the idea of serving in another country or ethnic community.", "I am skilled in working with different kinds of tools.", "I enjoy developing and using my artistic skills (art, drama, music, photography, etc…).", "I frequently am able to judge a person’s character based upon first impressions.", "I enjoy reassuring and strengthening those who are discouraged.", "I consistently look for opportunities to build relationships with non-Christians.", "I have confidence in God’s continuing provision and help, even in difficult times.", "I give more than a tithe so that kingdom work can be accomplished.", "I enjoy doing routine tasks that support the ministry.", "I enjoy meeting new people and helping them to feel welcomed.", "I enjoy praying for long periods of time and receive leadings as to what God wants me to pray for.", "I receive information from the Spirit that I did not acquire through natural means.", "I am able to influence others to achieve a vision.", "I can patiently support those going through painful experiences as they try to stabilize their lives.", "I feel responsible to confront others with the truth.", "I have compassion for wandering believers and want to protect them.", "I can spend time in study knowing that presenting truth will make a difference in the lives of people.", "I can often find simple, practical solutions in the midst of conflict or confusion.", "I can clarify goals and develop strategies or plans to accomplish them.", "I am willing to take an active part in starting a new church.", "I enjoy making things for use in ministry.", "I help people understand themselves, their relationships and God better through artistic expression.", "I can see through phoniness or deceit before it is evident to others.", "I give hope to others by directing them to the promises of God.", "I am effective at adapting the gospel message so that it connects with an individual’s felt needs.", "I believe that God will help me to accomplish great things.", "I manage my money well in order to free more of it for giving.", "I willingly take on a variety of odd jobs around the church to meet the needs of others.", "I genuinely believe the Lord directs strangers to me who need to get connected to others.", "I am conscious of ministering to others as I pray.", "I am committed, and schedule blocks of time for reading and studying Scripture, to understand Biblical truth fully and accurately.", "I can adjust my leadership style to bring out the best in others.", "I enjoy helping people sometimes regarded as undeserving or beyond help.", "I boldly expose cultural trends, teachings, or events, which contradict Biblical principles.", "I like to provide guidance for the whole person – relationally, emotionally, spiritually, etc…", "I can devote considerable time to learning new Biblical truths in order to communicate them to others.", "I can easily select the most effective course of action from among several alternatives.", "I can identify and effectively use the resources needed to accomplish tasks.", "I can adapt well to different cultures and surroundings.", "I can visualize how something should be constructed before I build it.", "I like finding new and fresh ways of communicating God’s truth.", "I tend to see rightness or wrongness in situations.", "I reassure those who need to take courageous action in their faith, family, or life.", "I invite unbelievers to accept Christ as their Savior.", "I trust God in circumstances where success cannot be guaranteed by human effort alone.", "I am challenged to limit my lifestyle in order to give away higher percentages of my income.", "I see spiritual significance in doing practical tasks.", "I like to create a place where people do not feel that they are alone.", "I pray with confidence because I know that God works in response to prayer.", "I have insight or just know something to be true.", "I set goals and manage people and resources effectively to accomplish them.", "I have great compassion for hurting people.", "I see most actions as right or wrong, and feel the need to correct the wrong.", "I can faithfully provide long-term support and concern for others.", "I like to take a systematic approach to my study of the Bible.", "I can anticipate the likely consequences of an individual’s or a group’s action.", "I like to help organizations or groups become more efficient.", "I can relate to others in culturally sensitive ways.", "I honor God with my handcrafted gifts.", "I apply various artistic expressions to communicate God’s truth.", "I receive affirmation from others concerning the reliability of my insights or perceptions.", "I strengthen those who are wavering in their faith.", "I openly tell people that I am a Christian and want them to ask me about my faith.", "I am convinced of God’s daily Presence and action in my life.", "I like knowing that my financial support makes a real difference in the lives and ministries of God’s people.", "I like to find small things that need to be done and often do them without being asked.", "I enjoy entertaining people and opening my home to others.", "When I hear about needy situations, I feel burdened to pray.", "I have suddenly known some things about others, but did not know how I knew them.", "I influence others to perform to the best of their capability.", "I can look beyond a person’s handicaps or problems to see a life that matters to God.", "I like people who are honest and will speak the truth.", "I enjoy giving guidance and practical support to a small group of people.", "I can communicate Scripture in ways that motivate others to study and want to learn more.", "I give practical advice to help others through complicated situations.", "I enjoy learning about how organizations function.", "I enjoy pioneering new undertakings.", "I am good at and enjoy working with my hands.", "I am creative and imaginative.", "I can identify preaching, teaching, or communication which is not true to the Bible.", "I like motivating others to take steps for spiritual growth.", "I openly and confidently tell others what Christ has done for me.", "I am regularly challenging others to trust God.", "I give generously due to my commitment to stewardship.", "I feel comfortable being a helper, assisting others to do their job more effectively.", "I do whatever I can to make people feel that they belong.", "I am honored when someone asks me to pray for them.", "I discover important Biblical truths when reading or studying Scripture which benefit others in the Body of Christ.", "I am able to cast a vision that others want to be a part of.", "I enjoy bringing hope and joy to people living in difficult circumstances.", "I will speak God’s truth, even in places where it is unpopular or difficult for others to accept.", "I can gently restore wandering believers to faith and fellowship.", "I can present information and skills to others at a level that makes it easy for them to grasp and apply to their lives.", "I can apply Scriptural truth that others regard as practical and helpful.", "I can visualize a coming event, anticipate potential problems, and develop backup plans.", "I am able to orchestrate or oversee several church ministries.", "I am able to design and construct things that help the church.", "I regularly need to get alone to reflect and develop my imagination.", "I can sense when demonic forces are at work in a person or situation.", "I am able to challenge or rebuke others in order to foster spiritual growth.", "I seek opportunities to talk about spiritual matters with unbelievers.", "I can move forward in spite of position or lack of support when I sense God’s blessing on an undertaking.", "I believe I have been given an abundance of resources so that I may give more to the Lord’s work.", "I readily and happily use my natural or learned skills to help wherever needed.", "I can make people feel at ease even in unfamiliar surroundings.", "I often see specific results in direct response to my prayers.", "I confidently share my knowledge and insights with others.", "I figure out where we need to go and help others to get there.", "I enjoy doing practical things for others who are in need.", "I feel compelled to expose sin wherever I see it and to challenge people to repentance.", "I enjoy patiently but firmly nurturing others in their development as believers.", "I enjoy explaining things to people so that they can grow spiritually and personally.", "I have insights into how to solve problems that others do not see."];
+const GIFTS = {"A": ["Administration", "The God-given special ability to serve and strengthen the body of Christ by effectively organizing resources and people in order to efficiently reach ministry goals."], "B": ["Apostleship", "The God-given special ability to serve and strengthen the body of Christ by launching and leading new ministry ventures that advance God’s purposes and expand his kingdom."], "C": ["Craftsmanship", "The God-given special ability to serve and strengthen the body of Christ by constructing or fixing his creation."], "D": ["Creative Communication", "The God-given special ability to serve and strengthen the body of Christ by using creativity and artistic expression to help others grasp God’s beauty, holiness, and truth in new ways."], "E": ["Discernment", "The God-given special ability to serve and strengthen the body of Christ by recognizing truth or error within a message, person, or events."], "F": ["Encouragement", "The God-given special ability to serve and strengthen the body of Christ by helping others live God-centered lives through inspiration, encouragement, counseling, and empowerment."], "G": ["Evangelism", "The God-given special ability to serve and strengthen the body of Christ by sharing the love of Christ with others in a way that invites them to respond by accepting God’s free gift of eternal life."], "H": ["Faith", "The God-given special ability to serve and strengthen the body of Christ by stepping out in faith in order to see God’s purposes accomplished, trusting him to handle any and all obstacles along the way."], "I": ["Giving", "The God-given special ability to serve and strengthen the body of Christ by joyfully supporting and funding various kingdom initiatives through material contributions beyond the tithe."], "J": ["Helps", "The God-given special ability to serve and strengthen the body of Christ by offering others assistance in reaching goals that glorify God."], "K": ["Hospitality", "The God-given special ability to serve and strengthen the body of Christ by providing others with a warm and welcoming environment for fellowship."], "L": ["Intercession", "The God-given special ability to serve and strengthen the body of Christ by persistently and eager presenting others’ needs to God through prayer."], "M": ["Knowledge", "The God-given special ability to serve and strengthen the body of Christ by communicating God’s truth to others in a way that promotes justice, honesty, and understanding."], "N": ["Leadership", "The God-given special ability to serve and strengthen the body of Christ by casting vision, stimulating spiritual growth, applying strategies, and achieving success where God’s purposes are concerned."], "O": ["Mercy", "The God-given special ability to serve and strengthen the body of Christ by ministering to those who suffer physically, emotionally, spiritually, or relationally. These actions are characterized by love, care, compassion, and kindness toward others."], "P": ["Prophecy", "The God-given special ability to serve and strengthen the body of Christ by offering messages from God that comfort, encourage, guide, warn, or reveal sin in a way that invites repentance and spiritual growth."], "Q": ["Shepherding", "The God-given special ability to serve and strengthen the body of Christ by taking spiritual responsibility for a group of believers and equipping them to live Christ-centered lives."], "R": ["Teaching", "The God-given special ability to serve and strengthen the body of Christ by teaching sound doctrine in relevant ways, empowering people to gain a sound and mature spiritual education."], "S": ["Wisdom", "The God-given special ability to serve and strengthen the body of Christ by making wise decisions and counseling others with sound advice, all in accordance with God’s revealed will from Scripture."]};
+const LETTERS = "ABCDEFGHIJKLMNOPQRS".split("");
+const answers = Array(133).fill(null);
+const PAGE_SIZE = 19;
+let page = 0;
+const $ = id => document.getElementById(id);
+function updateAnswered(){
+ const n=answers.filter(v=>v!==null).length;
+ $("answered").textContent=`${n} of 133 answered`;
+ $("progress").style.width=`${n/133*100}%`;
+}
+function renderPage(){
+ const start=page*PAGE_SIZE, end=Math.min(start+PAGE_SIZE,QUESTIONS.length);
+ $("sectionLabel").textContent=`Questions ${start+1}–${end} · Section ${page+1} of ${Math.ceil(133/PAGE_SIZE)}`;
+ $("questions").innerHTML="";
+ for(let i=start;i<end;i++){
+  const row=document.createElement("div");row.className="question";
+  const text=document.createElement("div");text.className="qtext";
+  const num=document.createElement("span");num.className="qnum";num.textContent=`${i+1}.`;
+  text.append(num,document.createTextNode(QUESTIONS[i]));
+  const choices=document.createElement("div");choices.className="choices";choices.setAttribute("role","radiogroup");choices.setAttribute("aria-label",`Question ${i+1} score`);
+  for(let v=0;v<=3;v++){
+   const wrap=document.createElement("div");wrap.className="choice";
+   const input=document.createElement("input");input.type="radio";input.name=`q${i}`;input.id=`q${i}_${v}`;input.value=v;input.checked=answers[i]===v;
+   input.addEventListener("change",()=>{answers[i]=v;updateAnswered();});
+   const label=document.createElement("label");label.htmlFor=input.id;label.textContent=v;label.title=["Not at all, never","Some of the time, once in a while","Most of the time, usually true","Consistently, definitely true"][v];
+   wrap.append(input,label);choices.append(wrap);
+  }
+  row.append(text,choices);$("questions").append(row);
+ }
+ $("prev").disabled=page===0;
+ $("next").textContent=page===Math.ceil(133/PAGE_SIZE)-1?"Submit assessment":"Next section";
+ updateAnswered();window.scrollTo({top:0,behavior:"smooth"});
+}
+function calculate(){
+ const scores={};
+ LETTERS.forEach((letter,index)=>{
+  const nums=Array.from({length:7},(_,j)=>index+1+j*19);
+  scores[letter]=nums.reduce((sum,n)=>sum+(answers[n-1]??0),0);
+ });
+ return scores;
+}
+
+const MINISTRIES = {
+ "Prayer Team": {
+  url:"https://www.churchonafarm.com/ministries",
+  summary:"A natural first conversation for Intercession, Faith, Encouragement, Mercy, or Shepherding.",
+  gifts:["Intercession","Faith","Encouragement","Mercy","Shepherding","Prophecy","Wisdom"]
+ },
+ "First Impressions Team": {
+  url:"https://www.churchonafarm.com/plan-your-visit",
+  summary:"Help people feel seen, welcomed, and connected. LifePointe's visit page specifically describes Greeter Team members helping guests and families find their way.",
+  gifts:["Hospitality","Helps","Encouragement","Evangelism","Administration","Leadership"]
+ },
+ "AV Team": {
+  url:"https://www.churchonafarm.com/ministries",
+  summary:"A possible fit for practical helpers/techies, detail-oriented organizers, and people who enjoy supporting a larger team behind the scenes. The public ministry page does not list an AV volunteer opening specifically, so confirm with the church.",
+  gifts:["Helps","Administration","Craftsmanship","Creative Communication","Leadership","Wisdom"]
+ },
+ "Parking Team": {
+  url:"https://www.churchonafarm.com/plan-your-visit",
+  summary:"A practical, guest-facing way to help Sunday mornings run smoothly and make arrival less stressful. Confirm current team structure and openings with LifePointe.",
+  gifts:["Helps","Hospitality","Administration","Encouragement","Leadership"]
+ },
+ "KidPointe": {
+  url:"https://www.churchonafarm.com/plan-your-visit",
+  summary:"Serve children through age-appropriate programming and help families feel comfortable. LifePointe describes nursery through fifth-grade programming and a volunteer onboarding process, including background checks and an attendance requirement.",
+  gifts:["Shepherding","Teaching","Mercy","Encouragement","Helps","Administration","Wisdom"]
+ },
+ "AccessPointe": {
+  url:"https://www.churchonafarm.com/accesspointe",
+  summary:"Offer individualized support so a child with special needs can participate in KidPointe. LifePointe describes one-on-one buddy volunteers and an application/matching process.",
+  gifts:["Mercy","Shepherding","Helps","Encouragement","Faith","Wisdom"]
+ },
+ "NextGen": {
+  url:"https://www.churchonafarm.com/nextgen",
+  summary:"Build relationships with middle-school, high-school, or college-age students as they grow in faith. Ask the NextGen ministry about current volunteer needs and any screening or training.",
+  gifts:["Shepherding","Teaching","Encouragement","Leadership","Evangelism","Wisdom","Faith"]
+ },
+ "LifeGroups Discipleship": {
+  url:"https://www.churchonafarm.com/lifegroups",
+  summary:"Encourage spiritual growth and meaningful relationships through small-group community. Potentially a fit for teaching, shepherding, wisdom, and encouragement.",
+  gifts:["Teaching","Shepherding","Wisdom","Knowledge","Encouragement","Leadership","Mercy"]
+ },
+ "Community Outreach": {
+  url:"https://www.churchonafarm.com/outreach",
+  summary:"Put compassion into action by serving people in the surrounding community. LifePointe describes Outreach as serving the community with compassion.",
+  gifts:["Mercy","Helps","Giving","Evangelism","Faith","Administration","Leadership","Hospitality"]
+ },
+ "Missions / Team Mexico": {
+  url:"https://www.churchonafarm.com/team-mexico",
+  summary:"Consider serving beyond the local church. Team Mexico partners with YUGO Ministries to help build homes for families in Ensenada; the page describes participation for ages 12+ and invites interest in future trips.",
+  gifts:["Apostleship","Evangelism","Helps","Craftsmanship","Giving","Faith","Leadership","Mercy"]
+ },
+ "Creative / Worship Team": {
+  url:"https://www.churchonafarm.com/employment",
+  summary:"Creative Communication may point toward worship or creative support. LifePointe's site lists a Worship Leader role, but that is an employment listing—not proof of a current volunteer opening—so ask about volunteer music, production, or creative opportunities.",
+  gifts:["Creative Communication","Craftsmanship","Leadership","Helps","Faith"]
+ }
+};
+const GIFT_MINISTRY_PRIORITY = {
+ "Administration":["First Impressions Team","Parking Team","AV Team","Community Outreach"],
+ "Apostleship":["Missions / Team Mexico","Community Outreach","NextGen"],
+ "Craftsmanship":["AV Team","Missions / Team Mexico","Parking Team"],
+ "Creative Communication":["Creative / Worship Team","AV Team","NextGen"],
+ "Discernment":["Prayer Team","LifeGroups Discipleship"],
+ "Encouragement":["First Impressions Team","NextGen","KidPointe","Prayer Team","LifeGroups Discipleship"],
+ "Evangelism":["First Impressions Team","Community Outreach","Missions / Team Mexico","NextGen"],
+ "Faith":["Prayer Team","Missions / Team Mexico","Community Outreach","AccessPointe"],
+ "Giving":["Missions / Team Mexico","Community Outreach","KidPointe"],
+ "Helps":["AV Team","Parking Team","First Impressions Team","Community Outreach","KidPointe"],
+ "Hospitality":["First Impressions Team","Parking Team","LifeGroups Discipleship"],
+ "Intercession":["Prayer Team","Community Outreach","Missions / Team Mexico"],
+ "Knowledge":["LifeGroups Discipleship","NextGen"],
+ "Leadership":["NextGen","LifeGroups Discipleship","First Impressions Team","Community Outreach"],
+ "Mercy":["AccessPointe","KidPointe","Community Outreach","Prayer Team"],
+ "Prophecy":["Prayer Team","LifeGroups Discipleship"],
+ "Shepherding":["NextGen","KidPointe","AccessPointe","LifeGroups Discipleship"],
+ "Teaching":["NextGen","KidPointe","LifeGroups Discipleship"],
+ "Wisdom":["LifeGroups Discipleship","Prayer Team","AccessPointe"]
+};
+function recommendMinistries(topGifts){
+ const totals={};
+ topGifts.forEach((gift,index)=>{
+  const weight=5-index;
+  (GIFT_MINISTRY_PRIORITY[gift.name]||[]).forEach((ministry,position)=>{
+   totals[ministry]=(totals[ministry]||0)+weight*(position===0?3:position===1?2:1);
+  });
+ });
+ // Ensure all church-verified options remain eligible even if a gift mapping is sparse.
+ Object.keys(MINISTRIES).forEach(name=>{if(totals[name]===undefined)totals[name]=0;});
+ return Object.keys(MINISTRIES).map(name=>({name,score:totals[name],...MINISTRIES[name]}))
+  .sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name)).slice(0,3);
+}
+function renderMinistryRecommendations(topGifts){
+ const target=$("ministryCards");target.innerHTML="";
+ recommendMinistries(topGifts).forEach((ministry,index)=>{
+  const card=document.createElement("article");card.className="gift";
+  const top=document.createElement("div");top.className="gift-top";
+  const title=document.createElement("h3");
+  const rank=document.createElement("span");rank.className="letter";rank.textContent=String(index+1);
+  title.append(rank,document.createTextNode(ministry.name));
+  top.append(title);
+  const summary=document.createElement("p");summary.textContent=ministry.summary;
+  const matched=document.createElement("p");matched.className="small";
+  const matchedGifts=topGifts.filter(g=>ministry.gifts.includes(g.name)).map(g=>g.name);
+  matched.textContent=matchedGifts.length?`Why it surfaced: connects with your top gifts of ${matchedGifts.join(", ")}.`:"Why it surfaced: a broad service option to explore with your church leader.";
+  const link=document.createElement("a");link.href=ministry.url;link.target="_blank";link.rel="noopener";link.textContent="Explore this ministry on LifePointe's website ↗";
+  card.append(top,summary,matched,link);target.append(card);
+ });
+}
+
+function showResults(){
+ const scores=calculate();
+ const sorted=LETTERS.map(letter=>({letter,score:scores[letter],name:GIFTS[letter][0],description:GIFTS[letter][1]}))
+ .sort((a,b)=>b.score-a.score||a.letter.localeCompare(b.letter));
+ $("giftResults").innerHTML="";
+ sorted.slice(0,5).forEach((g,i)=>{
+  const card=document.createElement("article");card.className="gift";
+  const top=document.createElement("div");top.className="gift-top";
+  const title=document.createElement("h3");
+  const letter=document.createElement("span");letter.className="letter";letter.textContent=g.letter;
+  title.append(letter,document.createTextNode(g.name));
+  const score=document.createElement("span");score.className="score";score.textContent=`${g.score} / 21`;
+  top.append(title,score);
+  const bar=document.createElement("div");bar.className="bar";const fill=document.createElement("span");fill.style.width=`${g.score/21*100}%`;bar.append(fill);
+  const desc=document.createElement("p");desc.textContent=g.description;
+  const rank=document.createElement("p");rank.className="small";rank.textContent=`Rank ${i+1}`;
+  card.append(top,bar,desc,rank);$("giftResults").append(card);
+ });
+ renderMinistryRecommendations(sorted.slice(0,5));
+ $("scoreTable").innerHTML="";
+ sorted.slice().sort((a,b)=>a.letter.localeCompare(b.letter)).forEach(g=>{
+  const tr=document.createElement("tr");
+  [g.letter,g.name,`${g.score} / 21`].forEach(val=>{const td=document.createElement("td");td.textContent=val;tr.append(td)});
+  $("scoreTable").append(tr);
+ });
+ $("assessment").classList.add("hidden");$("intro").classList.add("hidden");$("results").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});
+}
+function beginAssessment(){
+ $("intro").classList.add("hidden");
+ $("assessment").classList.remove("hidden");
+ page=0;
+ renderPage();
+ $("assessment").scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+}
+$("start").addEventListener("click",beginAssessment);
+$("start").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();beginAssessment()}});
+$("prev").addEventListener("click",()=>{if(page>0){page--;renderPage()}});
+$("next").addEventListener("click",()=>{
+ const start=page*PAGE_SIZE,end=Math.min(start+PAGE_SIZE,133);
+ const missing=[];for(let i=start;i<end;i++)if(answers[i]===null)missing.push(i+1);
+ if(missing.length){alert(`Please answer every question in this section. Missing: ${missing.join(", ")}`);return}
+ if(page<Math.ceil(133/PAGE_SIZE)-1){page++;renderPage();return}
+ const totalMissing=answers.map((v,i)=>v===null?i+1:null).filter(v=>v!==null);
+ if(totalMissing.length){alert(`Please answer all 133 questions. Missing: ${totalMissing.join(", ")}`);return}
+ showResults();
+});
+$("edit").addEventListener("click",()=>{$("results").classList.add("hidden");$("assessment").classList.remove("hidden");page=0;renderPage()});
+$("print").addEventListener("click",()=>window.print());
+</script>
+</body></html>

@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "mode": "projects",
+  "created_at": "2026-11-06T21:53:17.031079+00:00",
+  "files": [
+    {
+      "path": "guides/7-Day-Spiritual-Warfare-Prayer-Guide.pdf",
+      "bytes": 731338,
+      "sha256": "70fc351ffa788362557e7f808d2692ec117cc2e252d900ca81c2efddc2311ddd",
+      "mode": 436,
+      "parts": []
+    },
+    {
+      "path": "apps/shape_spiritual_gift_assessment_splash.html",
+      "bytes": 43363,
+      "sha256": "ce599fe2b4ad115ee4adf95a396d8325c831dfef690a2b04eba03e113108f1cb",
+      "mode": 436,
+      "parts": []
+    }
+  ],
+  "excluded": [],
+  "excluded_directories": []
+}
